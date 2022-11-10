@@ -9,22 +9,23 @@ export class MainView extends React.Component {
     this.state = {
       movies: [
         { _id: "635a4ef51232a560c886d138", 
-            Title: 'Silence of the Lambs', 
-            Description: 'A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.', 
-            Genre: {
-                Name: "Thriller",
-                Description:
-                  "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience",
-              },
-              Director: {
-                Name: "Jonathan Demme",
-                Bio: "Robert Jonathan Demme was an American producer and screenwriter.",
-                Birth: "1944",
-                Death: "2017",
-              },
-              ImagePath:
-              "https://www.imdb.com/title/tt0102926/mediaviewer/rm803658241/?ref_=ext_shr_lnk",
-            Featured: true,
+        Title: "Silence of the Lambs",
+        Description:
+          "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another terrible serial killer.",
+        Genre: {
+          Name: "Thriller",
+          Description:
+            "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience",
+        },
+        Director: {
+          Name: "Jonathan Demme",
+          Bio: "Robert Jonathan Demme was an American producer and screenwriter.",
+          Birth: "1944",
+          Death: "2017",
+        },
+        ImagePath:
+          "https://www.imdb.com/title/tt0102926/mediaviewer/rm803658241/?ref_=ext_shr_lnk",
+        Featured: true,
           },        
         
         { _id: "635a4ef51232a560c886d139", 
