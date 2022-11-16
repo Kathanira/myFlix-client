@@ -44,11 +44,25 @@ onLoggedIn(user) {
   });
 }
 
+toRegister(registered) {
+  this.setState({
+    registered,
+  });
+}
+
 render() {
-  const { movies, selectedMovie, user } = this.state;
+  const { movies, selectedMovie, user, registered } = this.state;
+
+  if (!registered) return <RegistrationView />;
 
   /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-  if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+  if (!user)
+      return (
+        <LoginView
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+          toRegister={(registered) => this.toRegister(registered)}
+        />
+      );
 
   // Before the movies have been loaded
   if (movies.length === 0) return <div className="main-view" />;
