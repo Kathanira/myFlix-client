@@ -30651,6 +30651,16 @@ function LoginView(props) {
                 },
                 __self: this,
                 children: "Submit"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                variant: "secondary",
+                type: "submit",
+                __source: {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 42
+                },
+                __self: this,
+                children: "Register"
             })
         ]
     }));
