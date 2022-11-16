@@ -6,6 +6,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from "../movie-view/movie-view";
 
+import './main-view.scss';
+
 export class MainView extends React.Component {
 
   constructor() {
