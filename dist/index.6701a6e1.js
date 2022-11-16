@@ -25290,34 +25290,37 @@ class MainView extends _reactDefault.default.Component {
             user
         });
     }
-    /*toRegister(registered) {
-  this.setState({
-    registered,
-  });
-}*/ render() {
-        const { movies , selectedMovie , user  } = this.state;
-        //if (!registered) return <RegistrationView />;
-        /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-            onLoggedIn: (user1)=>this.onLoggedIn(user1)
-            ,
+    toRegister(registered) {
+        this.setState({
+            registered
+        });
+    }
+    render() {
+        const { movies , selectedMovie , user , registered  } = this.state;
+        if (!registered) return(/*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 59
+                lineNumber: 56
             },
             __self: this
         }));
-        /*if (!user)
-      return (
-        <LoginView
-          onLoggedIn={(user) => this.onLoggedIn(user)}
-          toRegister={(registered) => this.toRegister(registered)}
-        />
-      );*/ // Before the movies have been loaded
+        /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+            onLoggedIn: (user1)=>this.onLoggedIn(user1)
+            ,
+            toRegister: (registered1)=>this.toRegister(registered1)
+            ,
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 61
+            },
+            __self: this
+        }));
+        // Before the movies have been loaded
         if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 69
+                lineNumber: 68
             },
             __self: this
         }));
@@ -25325,7 +25328,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 72
+                lineNumber: 71
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25335,7 +25338,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 75
+                    lineNumber: 74
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25345,7 +25348,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 77
+                        lineNumber: 76
                     },
                     __self: this
                 }, movie._id)
@@ -25353,7 +25356,6 @@ class MainView extends _reactDefault.default.Component {
         }));
     }
 }
-exports.default = MainView;
 
   $parcel$ReactRefreshHelpers$35bf.postlude(module);
 } finally {
@@ -30549,10 +30551,11 @@ function LoginView(props) {
         console.log(username, password);
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
-    /*const handleRegisterClick = (e) => {
-    e.preventDefault();
-    props.toRegister();
-  };*/ return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
+    const handleRegisterClick = (e)=>{
+        e.preventDefault();
+        props.toRegister();
+    };
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
             lineNumber: 21
