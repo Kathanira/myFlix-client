@@ -25,25 +25,39 @@ export function LoginView(props) {
 
 
   return (
+    <Container className="login-container">
+    <Card className="login-card mt-5">
+      <Card.Body>
+        <Card.Title className="text-center" as="h4">
+          Login
+        </Card.Title>
     <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        <Form.Control type="text" onChange={e => setUsername(e.target.value)} 
+        required
+        placeholder="Please enter your Username"/>
       </Form.Group>
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control type="password" onChange={e => setPassword(e.target.value)} 
+         required
+         placeholder="Please enter your Password"
+         />
       </Form.Group>
 
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+      <Button className="login-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>
+        Sign in
       </Button>
-      <Button variant="secondary" type="submit">
+      <Button className="register-button mt-2" variant="secondary" type="submit" onClick={handleRegisterClick}>
         Register
       </Button>
      
     </Form>
+    </Card.Body>
+    </Card>
+    </Container>
   );
 }
 
