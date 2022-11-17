@@ -12,7 +12,10 @@ export function LoginView(props) {
     /* then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
   };
-
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    props.toRegister();
+  };
 
   return (
     <form>
