@@ -25277,7 +25277,6 @@ var _navbar = require("../navbar/navbar");
 var _directorView = require("../director-view/director-view");
 var _genreView = require("../genre-view/genre-view");
 var _profileView = require("../profile-view/profile-view");
-var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _row = require("react-bootstrap/Row");
@@ -25451,23 +25450,24 @@ class MainView extends _reactDefault.default.Component {
                             __self: this
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            path: `/users/:username`,
+                            path: `/users/${user}`,
                             render: ({ history  })=>{
                                 if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                                     to: "/"
                                 }));
                                 return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
-                                        movies: movies,
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_profileView.ProfileView, {
+                                        user: user,
                                         goBack: history.goBack,
                                         favoriteMovies: favoriteMovies || [],
-                                        handleFavorite: this.handleFavorite
+                                        handleFavorite: this.handleFavorite,
+                                        onBackClick: ()=>history.goBack()
                                     })
                                 }));
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 168
+                                lineNumber: 170
                             },
                             __self: this
                         }),
@@ -25486,7 +25486,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 185
+                                lineNumber: 188
                             },
                             __self: this
                         }),
@@ -25512,7 +25512,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 201
+                                lineNumber: 204
                             },
                             __self: this
                         }),
@@ -25538,7 +25538,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 222
+                                lineNumber: 225
                             },
                             __self: this
                         }),
@@ -25564,7 +25564,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 246
+                                lineNumber: 249
                             },
                             __self: this
                         })

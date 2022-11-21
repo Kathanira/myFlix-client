@@ -11,7 +11,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { Navbar } from "../navbar/navbar";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
-import ProfileView from "../profile-view/profile-view";
+import {ProfileView} from "../profile-view/profile-view";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -165,17 +165,20 @@ render() {
           }}
         />
 
-<Route
-            path={`/users/:username`}
+        {/* route for link on main-view to profile-view */}
+
+        <Route
+            path={`/users/${user}`}
             render={({ history }) => {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
                   <ProfileView
-                    movies={movies}
+                    user={user}
                     goBack={history.goBack}
                     favoriteMovies={favoriteMovies || []}
                     handleFavorite={this.handleFavorite}
+                    onBackClick={() => history.goBack()}
                   />
                 </Col>
               );
