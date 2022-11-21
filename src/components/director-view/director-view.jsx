@@ -1,84 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CardGroup, Button, Card, Col } from 'react-bootstrap';
+import React from "react";
+import { Button, Container, Col, Row } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
 
-import { Link } from 'react-router-dom';
-
-import './director-view.scss';
-export default class DirectorView extends React.Component {
+export class DirectorView extends React.Component {
   render() {
-    const { movies, director, onBackClick } = this.props;
+    const { director, onBackClick, directorMovies } = this.props;
 
     return (
-      <Card bg="dark" text="light">
-        <Card.Header className="text-center" as="h5">
-          {director.Name}
-        </Card.Header>
-        <Card.Body className="director-textarea">
-          <Card bg="dark" border="dark" text="light">
-            <div className="movie-director-birth">
-              <span className="label">Born in </span>
-              <span className="value">{director.Birth}</span>
-            </div>
-            <div className="movie-director-death">
-              <span className="label">Died in </span>
-              <span className="value">{director.Death}</span>
-            </div>
-            <div className="movie-director-bio">
-              <span className="label">Biography</span>
-              <span className="value">{director.Bio}</span>
-            </div>
-            <span className="label headline-director-mini-cards">
-              Selected movies by this director
-            </span>
-            <CardGroup className="card-group-director-mini-cards">
-              {movies.map((m) => (
-                <Col
-                  md={6}
-                  lg={3}
-                  key={m._id}
-                  className="director-movie-card-mini"
-                >
-                  <Link to={`/movies/${m._id}`}>
-                    <Card className="h-100" bg="dark" text="light">
-                      <Card.Img
-                        variant="top"
-                        crossOrigin="anonymous | use-credentials"
-                        src={m.ImagePath}
-                      />
-                      <Card.Body>
-                        <Card.Title>{m.Title}</Card.Title>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </Col>
-              ))}
-            </CardGroup>
-          </Card>
-        </Card.Body>
-        <Card.Footer className="text-right">
-          <Button
-            className="button-director-view"
-            variant="secondary"
-            onClick={() => {
-              onBackClick();
-            }}
-          >
-            Back
-          </Button>
-        </Card.Footer>
-      </Card>
+      <Container className="director-view">
+        <Row>
+          <Col>
+            <h1>{director.Name}</h1>
+            <p>Birth: {director.Birth}</p>
+            {director.Death > 0 && <p>Death: {director.Death}</p>}
+          </Col>
+        </Row>
+        <Row>
+          <Col>{director.Bio}</Col>
+        </Row>
+        <Row>
+          <Col className="mt-3">
+            <h4>Other movies by {director.Name}:</h4>
+          </Col>
+        </Row>
+        <Row>
+          {directorMovies?.map((movie) => (
+            <Col lg={4} md={6}>
+              <MovieCard key={movie._id} movie={movie}>
+                {movie.Title}
+              </MovieCard>
+            </Col>
+          ))}
+        </Row>
+        <Button
+          className="mt-3 backBtn"
+          onClick={() => {
+            onBackClick(null);
+          }}
+          variant="secondary"
+        >
+          Go Back
+        </Button>
+      </Container>
     );
   }
 }
-
-DirectorView.propTypes = {
-  movies: PropTypes.array.isRequired,
-  director: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string.isRequired,
-    Birth: PropTypes.string.isRequired,
-    Death: PropTypes.string.isRequired,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
-};
