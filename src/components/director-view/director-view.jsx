@@ -18,11 +18,7 @@ export class DirectorView extends React.Component {
         <Row>
           <Col>{director.Bio}</Col>
         </Row>
-        <Row>
-          <Col className="mt-3">
-            <h4>Other movies by {director.Name}:</h4>
-          </Col>
-        </Row>
+     
         <Row>
           {directorMovies?.map((movie) => (
             <Col lg={4} md={6}>

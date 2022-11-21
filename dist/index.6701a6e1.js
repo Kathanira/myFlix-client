@@ -46549,34 +46549,7 @@ class DirectorView extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 21
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                        className: "mt-3",
-                        __source: {
-                            fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 22
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
-                            __source: {
-                                fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 23
-                            },
-                            __self: this,
-                            children: [
-                                "Other movies by ",
-                                director.Name,
-                                ":"
-                            ]
-                        })
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
-                    __source: {
-                        fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 26
+                        lineNumber: 22
                     },
                     __self: this,
                     children: directorMovies?.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -46584,14 +46557,14 @@ class DirectorView extends _reactDefault.default.Component {
                             md: 6,
                             __source: {
                                 fileName: "src/components/director-view/director-view.jsx",
-                                lineNumber: 28
+                                lineNumber: 24
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                                 movie: movie,
                                 __source: {
                                     fileName: "src/components/director-view/director-view.jsx",
-                                    lineNumber: 29
+                                    lineNumber: 25
                                 },
                                 __self: this,
                                 children: movie.Title
@@ -46607,7 +46580,7 @@ class DirectorView extends _reactDefault.default.Component {
                     variant: "secondary",
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 35
+                        lineNumber: 31
                     },
                     __self: this,
                     children: "Go Back"
