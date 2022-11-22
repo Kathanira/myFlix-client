@@ -11,7 +11,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { Navbar } from "../navbar/navbar";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
-import {ProfileView} from "../profile-view/profile-view";
+import ProfileView from "../profile-view/profile-view";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -104,8 +104,8 @@ handleFavorite = (movieId, action) => {
           console.log(`Movie added to ${username} Favorite movies`);
           alert(`Movie added to ${username} Favorite movies`);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(function (error) {
+          console.log(error);
         });
 
       // Remove MovieID from Favorites (local state & webserver)
@@ -123,8 +123,8 @@ handleFavorite = (movieId, action) => {
         .then((res) => {
           console.log(`Movie removed from ${username} Favorite movies`);
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(function (error) {
+          console.log(error);
         });
     }
   }
@@ -216,6 +216,7 @@ render() {
                 <MovieView
                   movie={movies.find((m) => m._id === match.params.movieId)}
                   onBackClick={() => history.goBack()}
+                  handleFavorite={this.handleFavorite}
                 />
               </Col>
             );
