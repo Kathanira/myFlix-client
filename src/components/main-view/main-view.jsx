@@ -267,7 +267,7 @@ render() {
                 <MovieView
                   movie={movies.find((m) => m._id === match.params.movieId)}
                   onBackClick={() => history.goBack()}
-                  handleFavorite={this.handleFavorite}
+                  addFavorite={this.addFavorite}
                 />
               </Col>
             );

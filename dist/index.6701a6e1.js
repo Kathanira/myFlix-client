@@ -25542,7 +25542,7 @@ class MainView extends _reactDefault.default.Component {
                                         ),
                                         onBackClick: ()=>history.goBack()
                                         ,
-                                        handleFavorite: this.handleFavorite
+                                        addFavorite: this.addFavorite
                                     })
                                 }));
                             },
@@ -46330,23 +46330,6 @@ class MovieView extends _reactDefault.default.Component {
                                 children: "Genre"
                             })
                         }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                            to: `/users/${user}`,
-                            __source: {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 43
-                            },
-                            __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                variant: "link",
-                                __source: {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 44
-                                },
-                                __self: this,
-                                children: "Profile"
-                            })
-                        }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                             className: "button-movie-view-add-favorite",
                             variant: "outline-warning",
@@ -46356,7 +46339,7 @@ class MovieView extends _reactDefault.default.Component {
                             ,
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 47
+                                lineNumber: 45
                             },
                             __self: this,
                             children: "Add to favorites"
@@ -46369,7 +46352,7 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 56
+                                lineNumber: 54
                             },
                             __self: this,
                             children: "Back"
