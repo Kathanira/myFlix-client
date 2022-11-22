@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick, handleFavorite } = this.props;
+    const { movie, onBackClick, addFavorite } = this.props;
 
     return (
       <Row>
@@ -40,13 +40,18 @@ export class MovieView extends React.Component {
             <Link to={`/genres/${movie.Genre.Name}`}>
               <Button variant="link">Genre</Button>
             </Link>
+            <Link to={`/users/${user}`}>
+              <Button variant="link">Profile</Button>
+            </Link>
           
-          <Button
-            className="favorite-button mt-2"
-            variant="primary"
-            onClick={() => handleFavorite(movie._id, "add")}
+            <Button
+            className="button-movie-view-add-favorite"
+            variant="outline-warning"
+            size="sm"
+            type="button"
+            onClick={() => addFavorite(movie._id)}
           >
-            Add to favorite Movies
+            Add to favorites
           </Button>
             <Button
               className="back-button mt-2"
