@@ -173,13 +173,13 @@ render() {
               if (!user) return <Redirect to="/" />;
               return (
                 <Col>
-                  <ProfileView
-                    user={user}
-                    goBack={history.goBack}
-                    favoriteMovies={favoriteMovies || []}
-                    handleFavorite={this.handleFavorite}
-                    onBackClick={() => history.goBack()}
-                  />
+                  <ProfileView 
+                  user={user} 
+                  goBack={history.goBack} 
+                  favoriteMovies={favoriteMovies || []} 
+                  handleFavorite={this.handleFavorite} 
+                  onBackClick={() => history.goBack()} 
+                  movies={movies} />
                 </Col>
               );
             }}
