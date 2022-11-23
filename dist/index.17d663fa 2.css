@@ -1,0 +1,31 @@
+
+
+
+
+.movie-director-bio > span.label,
+.headline-director-mini-cards {
+  display: block;
+  margin: 15px 0;
+}
+
+.movie-director-birth > span.label,
+.movie-director-death > span.label {
+  font-weight: 400;
+}
+
+.card-group-director-mini-cards {
+  margin-top: 10px;
+}
+.movie-genre-description > span.label,
+.headline-genre-mini-cards {
+  display: block;
+  margin: 0 0 15px 0;
+}
+
+.card-group-genre-mini-cards {
+  margin-top: 10px;
+}
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.17d663fa.css.map */
