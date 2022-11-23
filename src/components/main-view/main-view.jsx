@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
@@ -17,18 +19,30 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+
+
 import './main-view.scss';
 
-export class MainView extends React.Component {
+// #0
+import { setMovies } from '../../actions/actions';
+
+// we haven't written this one yet
+import MoviesList from '../movies-list/movies-list';
+/* 
+  #1 The rest of components import statements but without the MovieCard's 
+  because it will be imported and used in the MoviesList component rather
+  than in here. 
+*/
+
+// #2 export keyword removed from here
+class MainView extends React.Component {
 
   constructor() {
     super();
+
+    // #3 movies state removed from here
     this.state = {
-      movies: [],
-      favoriteMovies: [],
-      selectedMovie: null,
-      user: null,
-      registered: true,
+      user: null
     };
   }
   componentDidMount() {
@@ -47,15 +61,14 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
+         // #4
+         this.props.setMovies(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
         });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+      }
+    
 
 /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
 
@@ -129,7 +142,41 @@ handleFavorite = (movieId, action) => {
     }
   }
 };
+
 render() {
+
+  // #5 movies is extracted from this.props rather than from the this.state
+  let { movies } = this.props;
+  let { user } = this.state;
+
+  return (
+    <Router>
+      <Row className="main-view justify-content-md-center">
+        <Route exact path="/" render={() => {
+          if (!user) return <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+          </Col>
+          if (movies.length === 0) return <div className="main-view" />;
+          // #6
+          return <MoviesList movies={movies}/>;
+        }} />
+        {/* The rest of routes */}
+      </Row>
+    </Router>
+        );
+}
+}
+
+// #7
+let mapStateToProps = state => {
+return { movies: state.movies }
+}
+
+// #8
+export default connect(mapStateToProps, { setMovies } )(MainView);
+
+
+/*render() {
   const { movies, user, favoriteMovies } = this.state;
   return (
     <Router>
@@ -165,7 +212,7 @@ render() {
           }}
         />
 
-        {/* route for link on main-view to profile-view */}
+        {/* route for link on main-view to profile-view }
 
         <Route
             path={`/users/${user}`}
@@ -276,7 +323,7 @@ render() {
 }
 }
 
-export default MainView;
+export default MainView;*/
 /*render() {
   const { movies, selectedMovie, user, favoriteMovies } = this.state;
   return (
