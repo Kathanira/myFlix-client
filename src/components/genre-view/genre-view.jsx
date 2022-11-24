@@ -16,11 +16,7 @@ export class GenreView extends React.Component {
         <Row>
           <p>{genre.Description}</p>
         </Row>
-        <Row>
-          <Col>
-            <h4>Other {genre.Name} films:</h4>
-          </Col>
-        </Row>
+    
 
         <Row>
           {genreMovies?.map((movie) => (
