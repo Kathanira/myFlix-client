@@ -12,10 +12,6 @@ When — Users will be able to use the Movie App whenever they want to read info
 Where — The application is hosted online. The Movie application itself is responsive and can be used anywhere and on any device, giving all users the same experience
 Why — Movie enthusiasts should be able to access information about different movies, directors, and genres, whenever they want to. Having the ability to save lists of favorite movies will ensure users always have access to the films they want to watch or recommend to their peers.
 
-#Links
-
-Deployed app:
-Rest API:
 
 #Built with
 
