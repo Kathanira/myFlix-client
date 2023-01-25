@@ -49,7 +49,7 @@ export function RegistrationView(props) {
    const isReq = validate();
    if (isReq) {
      axios
-       .post("https://myflix-firstmovieapp.cyclic.app/users", {
+       .post("https://myflix-firstmovieapp.herokuapp.com/users", {
          Username: username,
          Password: password,
          Email: email,

@@ -43,7 +43,7 @@ export class ProfileView extends React.Component {
   getUser = (token) => {
     const Username = localStorage.getItem("user");
     axios
-      .get(`https://myflix-firstmovieapp.cyclic.app/users/${Username}`, {
+      .get(`https://myflix-firstmovieapp.herokuapp.com/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -66,7 +66,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     axios
       .put(
-        `https://myflix-firstmovieapp.cyclic.app/users/${Username}`,
+        `https://myflix-firstmovieapp.herokuapp.com/users/${Username}`,
         {
           username: this.state.Username,
           password: this.state.Password,
@@ -103,7 +103,7 @@ export class ProfileView extends React.Component {
 
     axios
       .delete(
-        `https://myflix-firstmovieapp.cyclic.app/users/${Username}/movies/${movie._id}`,
+        `https://myflix-firstmovieapp.herokuapp.com/users/${Username}/movies/${movie._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -124,7 +124,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
 
     axios
-      .delete(`https://myflix-firstmovieapp.cyclic.app/users/${Username}`, {
+      .delete(`https://myflix-firstmovieapp.herokuapp.com/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

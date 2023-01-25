@@ -57,7 +57,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get("https://myflix-firstmovieapp.cyclic.app/movies", {
+      .get("https://myflix-firstmovieapp.herokuapp.com/movies", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
