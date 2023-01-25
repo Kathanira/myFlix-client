@@ -1,10 +1,14 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import Logo from '/public/MyFlix-Logo.png'
+import { Link } from "react-router-dom";
 
-export function Navbar({ user }) {
-  const onLoggedOut = () => {
+export function Navbar({ user, onLoggedOut }) {
+  const handleLogOut = (e) => {
+    e.preventDefault();
     localStorage.clear();
-    window.open("/", "_self");
+    window.open('/', '_self');
+    onLoggedOut(user);
   };
 
   const isAuth = () => {
@@ -19,31 +23,33 @@ export function Navbar({ user }) {
   };
 
   return (
-    <Navbar
-      className="main-nav"
-      sticky="top"
-      bg="dark"
-      expand="lg"
-      variant="dark"
-    >
+    <Navbar className="navbar-custom mt-4" sticky="top" bg="dark"
+      expand="xl" style={{ borderRadius: '15px' }}>
       <Container>
-        <Navbar.Brand className="navbar-logo" href="/">
-          MyFlix
-        </Navbar.Brand>
+        <Link to="/">
+          <img src={Logo} height={65} className="pr-3" />
+        </Link>
+        <Navbar.Brand className="navbar-logo text-white text-center" href="/"></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+          <Nav className="text-center ml-auto">
             {isAuth() && (
-              <Button variant="link" onClick={onLoggedOut}>
-                Logout
-              </Button>
+              <Nav.Link className="text-white-50 text-center" href={`/users/${user}`}>{user}</Nav.Link>
             )}
-            {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
-            {!isAuth() && <Nav.Link href="/register">Sign-up</Nav.Link>}
+            {isAuth() && (
+              <Button className="text-white" variant="link" onClick={handleLogOut}>Logout</Button>
+            )}
+            {!isAuth() && (
+              <Nav.Link className="text-white" href="/">Log In</Nav.Link>
+            )}
+            {!isAuth() && (
+              <Nav.Link className="text-white" href="/register">Sign Up</Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
+
+export default Navbar

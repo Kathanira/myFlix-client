@@ -7,7 +7,31 @@ import './movie-view.scss';
 
 import { Link } from "react-router-dom";
 
+
 export class MovieView extends React.Component {
+  handleFavoriteMovie(e) {
+    const { movie } = this.props;
+    e.preventDefault();
+    axios
+      .post(
+        `https://myflix-firstmovieapp.herokuapp.com/users/${localStorage.getItem(
+          "user"
+        )}/Movies/${movie._id}`,
+        { username: localStorage.getItem("user") },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((res) => {
+        alert(`${movie.Title} successfully added to your favorites`);
+      })
+      .then((res) => {
+        document.location.reload(true);
+      })
+      .catch((error) => {
+        alert(`${movie.Title} not added to your favorites` + error);
+      });
+  }
   render() {
     const { movie, onBackClick, handleFavorite } = this.props;
 
@@ -27,37 +51,43 @@ export class MovieView extends React.Component {
               <span className="value">{movie.Description}</span>
             </div>
             <div className="movie-director">
-              <span className="label">Director: </span>
+            <Link to={`/directors/${movie.Director.Name}`}>
+              <Button variant="link">Director:</Button>
+            </Link>
               <span className="value">{movie.Director.Name}</span>
             </div>
+           
+
             <div className="movie-genre">
-              <span className="label">Genre: </span>
+            <Link to={`/genres/${movie.Genre.Name}`}>
+              <Button variant="link">Genre:</Button>
+            </Link>
               <span className="value">{movie.Genre.Name}</span>
             </div>
-            <Link to={`/directors/${movie.Director.Name}`}>
-              <Button variant="link">Director</Button>
-            </Link>
-            <Link to={`/genres/${movie.Genre.Name}`}>
-              <Button variant="link">Genre</Button>
-            </Link>
+
+
+        
           
-          <Button
-            className="favorite-button mt-2"
-            variant="primary"
-            onClick={() => handleFavorite(movie._id, "add")}
-          >
-            Add to favorite Movies
-          </Button>
+        
             <Button
-              className="back-button mt-2"
-              variant="secondary"
+              className="back-button mb-3 btn-lg px-5"
+              variant="outline-secondary"
               onClick={() => {
                 onBackClick();
               }}
             >
               Back
             </Button>
+            <Button
+            className="favorite-button mb-3 btn-lg px-5"
+            variant="outline-primary"
+            value={movie._id}
+            onClick={(e) => this.handleFavoriteMovie(e, movie)}
+          >
+            Add to your favorite Movies
+          </Button>
           </div>
+          
         </Col>
       </Row>
     );

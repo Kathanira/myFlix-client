@@ -4,7 +4,7 @@ import './login-view.scss';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
 
 import axios from 'axios';
 
@@ -58,54 +58,49 @@ const validate = () => {
   }
   };
 
-  const handleRegisterClick = (e) => {
+ const handleRegisterClick = (e) => {
     e.preventDefault();
     props.toRegister();
   };
 
 
   return (
-    <Container className="login-container">
-    <Card className="login-card mt-5">
-      <Card.Body>
-        <Card.Title className="text-center" as="h4">
-          Login
-        </Card.Title>
-    <Form>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} 
-        required
-        placeholder="Please enter your Username"/>
-        {/* code added here to display validation error */}
-        {usernameErr && <p>{usernameErr}</p>}
-      </Form.Group>
+    <Container className="py-5 h-100">
+      <Row className="d-flex justify-content-center align-items-center h-100">
+        <Col className="col-12 col-md-8 col-lg-6 col-xl-5">
+          <CardGroup>
+            <Card className="bg-dark text-white" style={{ borderRadius: '20px' }}>
+              <Card.Body className="p-5 text-center">
+                <Card.Title className="mb-4">LOGIN</Card.Title>
+                <p className="text-white-50 mb-4">Please enter your username and password!</p>
+                <Form>
+                  <Form.Group className="mb-4" controlId="formUsername">
+                    <Form.Control className="bg-dark text-white" type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {usernameErr && <p>{usernameErr}</p>}
+                  </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} 
-         required
-         placeholder="Please enter your Password"
-         />
-         {/* code added here to display validation error */}
-        {passwordErr && <p>{passwordErr}</p>}
-      </Form.Group>
-
-      <Button className="login-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>
-        Sign in
-      </Button>
-      <Button className="register-button mt-2" variant="secondary" type="submit" onClick={handleRegisterClick}>
+                  <Form.Group className="mb-4 " controlId="formPassword">
+                    <Form.Control className="bg-dark text-white" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {passwordErr && <p>{passwordErr}</p>}
+                  </Form.Group>
+                  <Button className="mb-3 btn-lg px-5" variant="outline-primary" type="submit" onClick={handleSubmit}>
+                    Log In
+                  </Button>
+                  <Button className="register-button mt-2" variant="secondary" type="submit" onClick={handleRegisterClick}>
         Register
       </Button>
-     
-    </Form>
-    </Card.Body>
-    </Card>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
     </Container>
   );
 }
 
 LoginView.propTypes = {
   onLoggedIn: PropTypes.func.isRequired,
-  toRegister: PropTypes.func.isRequired,
 };
