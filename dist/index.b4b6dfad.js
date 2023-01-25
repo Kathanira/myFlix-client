@@ -43576,13 +43576,22 @@ function LoginView(props) {
                                             lineNumber: 88,
                                             columnNumber: 19
                                         }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                            className: "register-button mb-3 btn-lg px-5",
-                                            variant: "outline-secondary",
-                                            type: "submit",
-                                            onClick: handleRegisterClick,
-                                            children: "Register"
-                                        }, void 0, false, {
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "login-register",
+                                            children: [
+                                                "Don't have an account? ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Link, {
+                                                    to: "/register",
+                                                    children: "Register"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/login-view/login-view.jsx",
+                                                    lineNumber: 92,
+                                                    columnNumber: 40
+                                                }, this),
+                                                " ",
+                                                "here"
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "src/components/login-view/login-view.jsx",
                                             lineNumber: 91,
                                             columnNumber: 19

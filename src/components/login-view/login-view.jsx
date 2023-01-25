@@ -88,7 +88,7 @@ const validate = () => {
                   <Button className="mb-3 btn-lg px-5" variant="outline-primary" type="submit" onClick={handleSubmit}>
                     Log In
                   </Button>
-                  <Button className="register-button mb-3 btn-lg px-5" variant="outline-secondary" type="submit" onClick={handleRegisterClick}>
+                  <Button className="register-button mt-2" variant="secondary" type="submit" onClick={handleRegisterClick}>
         Register
       </Button>
                 </Form>
