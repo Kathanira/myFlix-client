@@ -44,7 +44,7 @@ const validate = () => {
     /* Send request to the server for authentication */
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
-    axios.post('https://myflix-website.onrender.com/login', {
+    axios.post('https://myflix-firstmovieapp.herokuapp.com/login', {
       Username: username,
       Password: password
     })
