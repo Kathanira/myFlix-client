@@ -14,7 +14,7 @@ export class MovieView extends React.Component {
     e.preventDefault();
     axios
       .post(
-        `https://myflix-firstmovieapp.herokuapp.com/users/${localStorage.getItem(
+        `https://myflix-website.onrender.com/users/${localStorage.getItem(
           "user"
         )}/Movies/${movie._id}`,
         { username: localStorage.getItem("user") },
